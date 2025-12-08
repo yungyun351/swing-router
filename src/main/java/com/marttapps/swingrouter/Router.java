@@ -4,15 +4,20 @@ import java.awt.BorderLayout;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.function.Supplier;
 
 import javax.swing.JPanel;
 
 public class Router {
 
 	private final JPanel routerView = new JPanel(new BorderLayout());
-	private final Map<String, Supplier<Route>> routes = new HashMap<>();
 	private final Map<String, Object> params = new HashMap<>();
+
+	public Router() {
+	}
+
+	public Router(Route defaultRoute) {
+		navigate(defaultRoute);
+	}
 
 	public JPanel getRouterView() {
 		return routerView;
@@ -22,14 +27,10 @@ public class Router {
 		return params;
 	}
 
-	public void register(String path, Supplier<Route> builder) {
-		routes.put(path, builder);
-	}
-
 	public void navigate(Route route, Map<String, Object> params) {
 		this.params.clear();
 		this.params.putAll(params);
-		
+
 		RoutePanel routePanel;
 		try {
 			routePanel = route.getPanelClass() //
