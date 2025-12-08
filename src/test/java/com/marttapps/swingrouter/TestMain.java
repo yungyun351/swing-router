@@ -17,6 +17,8 @@ public class TestMain {
 	public void testRouter() //
 //			throws InterruptedException //
 	{
+		Router router = new Router(Routes.HOME);
+
 		JFrame frame = new JFrame("Swing Router Example");
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		frame.setSize(1000, 300);
@@ -31,9 +33,6 @@ public class TestMain {
 		headerLabel.setText("This is header");
 		headerBox.add(headerLabel);
 		container.add(headerBox);
-
-		Router router = new Router();
-		router.navigate(Routes.HOME);
 		container.add(router.getRouterView());
 
 		Box footerBox = Box.createHorizontalBox();

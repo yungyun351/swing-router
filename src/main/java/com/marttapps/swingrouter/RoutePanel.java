@@ -8,7 +8,7 @@ public class RoutePanel extends JPanel {
 
 	protected final transient Router router;
 
-	protected RoutePanel(Router router) {
+	public RoutePanel(Router router) {
 		this.router = router;
 	}
 
